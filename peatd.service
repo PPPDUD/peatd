@@ -1,0 +1,10 @@
+[Unit]
+Description=peatd flight tracking service
+After=multiuser.target
+[Service]
+Type=simple
+DynamicUser=yes
+ExecStart=/usr/bin/peatd
+SupplementaryGroups=plugdev
+[Install]
+WantedBy=multi-user.target
