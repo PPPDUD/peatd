@@ -1,0 +1,35 @@
+peatd(7) - configuration details for peatd
+=============================================
+
+## DESCRIPTION
+peatd(8) stores its configuration data in `/etc/peatd/.env`, which is a simplistic shell script that defines variables for its operation.
+
+Variables are defined in the format of `KEY=value` (or alternatively `KEY="value"`), and the variable names are always uppercase.
+
+While it's technically possible to set lowercase variables in `/etc/peatd/.env`, this is not supported functionality and has a good chance of breaking something important.
+
+
+## SETTINGS
+### ttyd(1) settings
+  * `USE_TTYD`:
+    If this variable is set to `true`, **peatd** will run a read-only ttyd(1) server that runs viewadsb(1) at the port specified with TTYD_PORT.
+
+  * `TTYD_PORT`:
+    The TCP port to use with ttyd(1); will be ignored unless `USE_TTYD` is set to `true`.
+
+  * `BEAST_CONNECTIONS`:
+    The sources to gather Beast-format ADS-B data from; multiple entries will be aggregated into one output. Uses the format `host,port,protocol` for each entry (see viewadsb(1)).
+    This variable will be ignored unless `USE_TTYD` is set to `true`.
+
+### readsb(1) settings
+  * `USE_READSB`:
+    If this variable is set to `true`, **peatd** will launch a readsb(1) instance to supply Beast data for a frontend of some sort.
+
+  * `DEVICE_TYPE`:
+    The type of SDR device for readsb(1) to use.
+
+  * `BEAST_PORT_OUT`:
+    The port to send Beast data over. This is usually set to 30005, but other ports can be used as needed.
+
+## SEE ALSO
+readsb(1), ttyd(1), viewadsb(1), bash(1), peatd(8)
