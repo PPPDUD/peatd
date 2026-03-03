@@ -1,0 +1,25 @@
+peatd(8) - daemon for creating and managing a simple flight tracking service
+=============================================
+
+## SYNOPSIS
+`peatd`
+
+## DESCRIPTION
+**peatd** is a simple and configurable daemon designed to help run an ADS-B flight tracking service on consumer hardware.
+
+Any user can run **peatd** as long as it can read `/etc/peatd/.env` and is a member of the `plugdev` user group.
+
+## FILES
+  * `/etc/peatd/.env`:
+    The primary configuration file for **peatd**. For a list of settings, see peatd(7).
+
+  * `/lib/systemd/system/peatd.service`:
+    A systemd service that starts **peatd** on boot; disabled by default.
+
+## NOTES
+**peatd** depends on readsb(1), but for some reason the Debian package for **readsb** comes with a systemd(1) service that's enabled by default.
+
+This service has the tendency to cause hard-to-diagnose resource conflicts, so most users should run `sudo systemctl disable --now readsb` before attempting to use **peatd**.
+
+## SEE ALSO
+readsb(1), ttyd(1), viewadsb(1), peatd(7)
