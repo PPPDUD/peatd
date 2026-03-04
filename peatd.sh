@@ -23,10 +23,12 @@ if [[ $USE_TTYD == "true" && $USE_READSB == "true" ]]; then
 	trap handle_kill SIGTERM SIGINT EXIT
 	echo "Running ttyd server on port $TTYD_PORT."
 	run-ttyd
+	wait -n
 
 elif [[ $USE_TTYD == "true" ]]; then
 	echo "Running ttyd server on port $TTYD_PORT."
 	run-ttyd
+	wait
 
 elif [[ $USE_READSB == "true" ]]; then
 	echo "Running readsb server on port $BEAST_PORT_OUT."
@@ -35,5 +37,3 @@ elif [[ $USE_READSB == "true" ]]; then
 else
 	echo "No services were requested. Exiting."
 fi
-
-wait
