@@ -2,7 +2,7 @@ peatd(7) - configuration details for peatd
 =============================================
 
 ## DESCRIPTION
-peatd(8) stores its configuration data in `/etc/peatd/.env`, which is a simplistic shell script that defines variables for its operation.
+peatd(8) stores its configuration data in `/etc/peatd/.env`, which is a simplistic shell script that defines settings for peatd(8)'s operation.
 
 Variables are defined in the format of `KEY=value` (or alternatively `KEY="value"`), and the variable names are always uppercase.
 
