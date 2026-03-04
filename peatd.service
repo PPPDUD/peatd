@@ -6,5 +6,6 @@ Type=simple
 DynamicUser=yes
 ExecStart=/usr/bin/peatd
 SupplementaryGroups=plugdev
+MemoryHigh=250M
 [Install]
 WantedBy=multi-user.target
