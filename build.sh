@@ -8,7 +8,7 @@ fpm \
 	-p peatd.deb \
 	--name peatd \
 	--license MIT \
-	--version 0.1.0 \
+	--version 0.2.0 \
 	--architecture all \
 	--description "PPPDUD's excellent ADS-B tracker daemon." \
 	--url "https://github.com/PPPDUD/peatd" \
@@ -16,8 +16,9 @@ fpm \
 	--depends "bash" \
 	--depends "readsb" \
 	--deb-recommends "ttyd" \
-	peatd=/usr/bin/peatd \
-	.env=/etc/peatd/.env \
-	peatd.service=/lib/systemd/system/peatd.service \
+	--deb-systemd peatd.service \
+	peatd.sh=/usr/bin/peatd \
+	config/full-stack.env=/etc/peatd/.env \
 	man/peatd.7.gz=/usr/share/man/man7/peatd.7.gz \
-	man/peatd.8.gz=/usr/share/man/man8/peatd.8.gz
+	man/peatd.8.gz=/usr/share/man/man8/peatd.8.gz \
+	config/=/usr/share/peatd/
