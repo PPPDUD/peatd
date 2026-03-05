@@ -18,7 +18,7 @@ While it's technically possible to set lowercase variables in `/etc/peatd/.env`,
     The TCP port to use with ttyd(1); will be ignored unless `USE_TTYD` is set to `true`.
 
   * `BEAST_CONNECTIONS`:
-    The sources to gather Beast-format ADS-B data from; multiple entries will be aggregated into one output. Uses the format `host,port,protocol` for each entry (see viewadsb(1)).
+    An array specifying the sources to gather Beast-format ADS-B data from; multiple entries will be aggregated into one table when using ttyd. Uses the format `host,port,protocol` for each entry (see viewadsb(1)).
     This variable will be ignored unless `USE_TTYD` is set to `true`.
 
 ### readsb(1) settings
@@ -30,6 +30,12 @@ While it's technically possible to set lowercase variables in `/etc/peatd/.env`,
 
   * `BEAST_PORT_OUT`:
     The port to send Beast data over. This is usually set to 30005, but other ports can be used as needed.
+
+  * `BEAST_BIND_ADDR`:
+    The IP address to bind to. Common values include `0.0.0.0` to permit all IPv4 clients, `::` to permit all IPv6 clients, and `127.0.0.1` to prevent external access.
+
+## TEMPLATES
+Template configuration files can be found in the `/usr/share/peatd` directory. `full-stack.env` is configured for an all-in-one tracking setup (which is the default in `/etc/peatd/.env`), `backend.env` supplies the `readsb` backend and nothing else, and `frontend.env` only provides a `ttyd` frontend.
 
 ## SEE ALSO
 readsb(1), ttyd(1), viewadsb(1), bash(1), peatd(8)
