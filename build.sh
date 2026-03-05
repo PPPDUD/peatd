@@ -8,7 +8,7 @@ fpm \
 	-p peatd.deb \
 	--name peatd \
 	--license MIT \
-	--version 0.2.0 \
+	--version 0.3.0 \
 	--architecture all \
 	--description "PPPDUD's excellent ADS-B tracker daemon." \
 	--url "https://github.com/PPPDUD/peatd" \
