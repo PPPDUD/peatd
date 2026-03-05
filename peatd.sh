@@ -17,7 +17,7 @@ function run-ttyd() {
 source /etc/peatd/.env
 if [[ $USE_TTYD == "true" && $USE_READSB == "true" ]]; then
 	echo "Running readsb server on port $BEAST_PORT_OUT."
-	readsb --device-type "$DEVICE_TYPE" --net --net-bo-port="$BEAST_PORT_OUT" &
+	readsb --device-type "$DEVICE_TYPE" --net --net-bo-port="$BEAST_PORT_OUT" --net-bind-address="$BEAST_BIND_ADDR" &
 	readsb_pid=$!
 	echo $readsb_pid
 	trap handle_kill SIGTERM SIGINT EXIT
